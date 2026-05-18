@@ -48,6 +48,15 @@ class TestBooksCollector:
         collector.set_book_genre('Гордость и предубеждение и зомби', 'Фантастика')
         assert collector.get_book_genre('Гордость и предубеждение и зомби') is None
 
+    def test_get_book_genre_valid_book_get_genre(self, collector):
+        collector.add_new_book('Гордость и предубеждение и зомби')
+        collector.set_book_genre('Гордость и предубеждение и зомби', 'Фантастика')
+        assert collector.get_book_genre('Гордость и предубеждение и зомби') == 'Фантастика'
+
+    def test_get_book_genre_book_without_genre_get_empty_string(self, collector):
+        collector.add_new_book('Гордость и предубеждение и зомби')
+        assert collector.get_book_genre('Гордость и предубеждение и зомби') == ''
+        
     def test_get_book_genre_not_existing_book(self, collector):
         assert collector.get_book_genre('Гордость и предубеждение и зомби') is None
 
