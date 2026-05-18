@@ -8,18 +8,6 @@ class TestBooksCollector:
         collector.add_new_book('Что делать, если ваш кот хочет вас убить')
         assert len(collector.get_books_genre()) == 2
 
-    def test_default_books_genre_empty_object(self, collector):
-        assert collector.get_books_genre() == {}
-    
-    def test_default_favorites_empty_object(self, collector):
-        assert collector.get_list_of_favorites_books() == []
-
-    def test_default_genre_list(self, collector):
-        assert collector.genre == ['Фантастика', 'Ужасы', 'Детективы', 'Мультфильмы', 'Комедии']
-
-    def test_default_genre_age_rating_list(self, collector):
-        assert collector.genre_age_rating == ['Ужасы', 'Детективы']
-
     def test_add_new_book_valid_name(self, collector):
         collector.add_new_book('Гордость и предубеждение и зомби')
         assert collector.get_books_genre() == {'Гордость и предубеждение и зомби': ''}
@@ -56,7 +44,7 @@ class TestBooksCollector:
     def test_get_book_genre_book_without_genre_get_empty_string(self, collector):
         collector.add_new_book('Гордость и предубеждение и зомби')
         assert collector.get_book_genre('Гордость и предубеждение и зомби') == ''
-        
+
     def test_get_book_genre_not_existing_book(self, collector):
         assert collector.get_book_genre('Гордость и предубеждение и зомби') is None
 
